@@ -15,12 +15,22 @@ A PHP web application with Docker, Nginx, PostgreSQL, pgAdmin, and Mailpit.
 
 | Layer | Technologies |
 |---|---|
-| Backend | PHP 8.3 (FPM) |
+| Backend | PHP 8.3 (FPM) with extensions & Composer 2 |
 | HTTP server | Nginx |
 | Database | PostgreSQL 16 |
 | Database Admin | pgAdmin 4 |
 | Mail Testing | Mailpit |
 | Containerization | Docker Compose |
+
+### PHP Environment & Extensions
+
+- **Composer**: 2.x
+- **Extensions**: `pdo_pgsql`, `pgsql`, `gd` (with JPEG support), `zip`, `opcache`, `bcmath`
+- **Configuration Defaults**:
+  - `memory_limit = -1`
+  - `upload_max_filesize = 512M`
+  - `post_max_size = 512M`
+  - `max_file_uploads = 20`
 
 ## Environment variables
 
