@@ -4,9 +4,17 @@ declare(strict_types=1);
 
 use App\Controller\DefaultController;
 use App\Controller\ProjectController;
+use App\Controller\StaticController;
 use App\Routing;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
+
+if (str_starts_with($path, '/static/')) {
+    (new StaticController())->serve($path);
+    return;
+}
 
 $routing = new Routing();
 
