@@ -9,6 +9,8 @@ A PHP web application with Docker, Nginx, PostgreSQL, pgAdmin, and Mailpit.
 | Routing & MVC | Custom lightweight regex-based router dispatching to controller actions |
 | Home page | Landing page displaying the welcome view (`/`) |
 | Projects | Project list (`/projects`) and dynamic single project details view (`/projects/{id}`) |
+| Connections | Connections list (`/connections`) and dynamic single connection details view (`/connections/{id}`) |
+| Static assets | Serving static files from `public/static/` via `StaticController` |
 | Error Handling | Custom 404 page for unmatched routes |
 | Database | PostgreSQL 16 server for data storage |
 | Database Management | pgAdmin 4 web UI for database administration |
@@ -43,6 +45,8 @@ A PHP web application with Docker, Nginx, PostgreSQL, pgAdmin, and Mailpit.
 | `GET` | `/` | `DefaultController::index` | Home page view |
 | `GET` | `/projects` | `ProjectController::index` | Projects overview list |
 | `GET` | `/projects/{id}` | `ProjectController::show` | Single project view by numeric ID |
+| `GET` | `/connections` | `ConnectionsController::index` | Connections overview list |
+| `GET` | `/connections/{id}` | `ConnectionsController::show` | Single connection view by numeric ID |
 | `*` | *(unmatched)* | `DefaultController::notFound` | 404 Not Found response |
 
 ## Environment variables
@@ -56,6 +60,7 @@ POSTGRES_DB=app_db
 POSTGRES_USER=app_user
 POSTGRES_PASSWORD=app_password
 PGADMIN_PORT=5050
+PGADMIN_CONTAINER_NAME=pg-admin
 PGADMIN_DEFAULT_EMAIL=admin@example.com
 PGADMIN_DEFAULT_PASSWORD=admin_password
 MAILPIT_PORT=8025
@@ -92,17 +97,25 @@ wdpai-project/
 │       └── Dockerfile
 ├── public/                # Publicly accessible application root
 │   ├── index.php          # Front controller & route definitions
+│   ├── static/            # Static assets (CSS, JS, images)
 │   └── views/             # HTML / PHP template views
+│       ├── book-cabin.html.php
+│       ├── book-details.html.php
+│       ├── connections.html.php
 │       ├── home.html.php
+│       ├── login.html.php
 │       ├── not-found.html.php
 │       ├── project.html.php
-│       └── projects.html.php
+│       ├── projects.html.php
+│       └── register.html.php
 └── src/                   # Application source code
     ├── Routing.php        # Custom regex-based router
     └── controllers/       # Controller classes
         ├── AppController.php
+        ├── ConnectionsController.php
         ├── DefaultController.php
-        └── ProjectController.php
+        ├── ProjectController.php
+        └── StaticController.php
 ```
 
 ## Development rules
