@@ -9,9 +9,7 @@ final class ConnectionsController extends AppController
     public function index(): void
     {
         $this->render('connections', [
-            'pageTitle' => 'Connections',
-            'cost1' => 51,
-            'cost2' => 42
+            'pageTitle' => 'Connections'
         ]);
     }
 
@@ -19,9 +17,7 @@ final class ConnectionsController extends AppController
     {
         $this->render('connections', [
             'pageTitle' => 'Connections',
-            'connectionId' => $id,
-            'cost1' => 51,
-            'cost2' => 42
+            'connectionId' => $id
         ]);
     }
 }
