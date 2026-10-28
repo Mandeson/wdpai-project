@@ -47,6 +47,7 @@ A PHP web application with Docker, Nginx, PostgreSQL, pgAdmin, and Mailpit.
 | `GET` | `/projects/{id}` | `ProjectController::show` | Single project view by numeric ID |
 | `GET` | `/connections` | `ConnectionsController::index` | Connections overview list |
 | `GET` | `/connections/{id}` | `ConnectionsController::show` | Single connection view by numeric ID |
+| `GET` | `/book/{id}` | `BookController::show` | Booking steps by numeric ID: `1` = cabin selection, `2` = details |
 | `*` | *(unmatched)* | `DefaultController::notFound` | 404 Not Found response |
 
 ## Environment variables
