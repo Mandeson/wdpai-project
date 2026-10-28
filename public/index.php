@@ -7,6 +7,7 @@ use App\Controller\DefaultController;
 use App\Controller\ProjectController;
 use App\Controller\StaticController;
 use App\Controller\LoginController;
+use App\Controller\RegisterController;
 use App\Routing;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
@@ -23,6 +24,7 @@ $routing = new Routing();
 $routing->get('/connections', ConnectionsController::class, 'index');
 $routing->get('/connections/{id}', ConnectionsController::class, 'show');
 $routing->get('/login', LoginController::class, 'index');
+$routing->get('/register', RegisterController::class, 'index');
 $routing->get('/projects', ProjectController::class, 'index');
 $routing->get('/projects/{id}', ProjectController::class, 'show');
 $routing->get('/', DefaultController::class, 'index');
