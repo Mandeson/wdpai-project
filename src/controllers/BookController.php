@@ -8,16 +8,22 @@ final class BookController extends AppController
 {
     public function show(int $id): void
     {
-        if ($id !== 1) {
-            http_response_code(404);
-            $this->render('not-found', [
-                'pageTitle' => 'Nie znaleziono strony',
-            ]);
-            return;
+        switch ($id) {
+            case 1:
+                $this->render('book-cabin', [
+                    'pageTitle' => 'Book a cabin',
+                ]);
+                return;
+            case 2:
+                $this->render('book-details', [
+                    'pageTitle' => 'Booking details',
+                ]);
+                return;
+            default:
+                http_response_code(404);
+                $this->render('not-found', [
+                    'pageTitle' => 'Nie znaleziono strony',
+                ]);
         }
-
-        $this->render('book-cabin', [
-            'pageTitle' => 'Book a cabin',
-        ]);
     }
 }
